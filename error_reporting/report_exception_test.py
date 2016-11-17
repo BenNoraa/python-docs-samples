@@ -12,14 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import mock
-
 import main
 
 
-@mock.patch("main.error_reporting")
-def test_error_sends(error_reporting_mock):
-    client_mock = mock.Mock()
-    error_reporting_mock.Client.return_value = client_mock
+def test_error_sends():
     main.simulate_error()
-    client_mock.report_exception.assert_called_once()
